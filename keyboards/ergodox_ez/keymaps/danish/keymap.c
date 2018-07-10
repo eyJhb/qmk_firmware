@@ -15,6 +15,7 @@ enum custom_keycodes {
   EPRM,
   VRSN,
   CIRC,
+  ACUT,
   RGB_SLD
 };
 
@@ -27,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   DEL  |   Q  |   W  |   E  |   R  |   T  |  ^   |           |   $  |   Y  |   U  |   I  |   O  |   P  |   Å    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  SHIFT | A/L1 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | Æ/L2 | Ø/Shift|
- * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| Hyper|           |   ´  |------+------+------+------+------+--------|
  * |  Ctrl  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |-/ctrl|   DEL  |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |alt/esc|  <  |   ?  |  <-  |  ->  |                                       |  UP  | Down |   #  |   $  | LT_nump|
@@ -54,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_RIGHT,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    DA_PLUS,
         DA_DLR,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    DA_AA,
         KC_H,        KC_J,    KC_K,    KC_L,    LT(MDIA, DA_AE),     LSFT_T(DA_OE),
-        MEH_T(KC_NO),KC_N,    KC_M,    KC_COMMA,KC_DOT,  DA_MINUS,KC_DEL,
+        ACUT,KC_N,    KC_M,    KC_COMMA,KC_DOT,  DA_MINUS,KC_DEL,
 		                      KC_UP,   KC_DOWN, LSFT(KC_3),ALGR(KC_4),TG(NUMP),
                                                  KC_INSERT,  KC_ESC,
                                                  KC_RALT,
@@ -230,6 +231,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CIRC:
       if (record->event.pressed) {
         SEND_STRING (SS_LSFT("}")" ");
+      }
+      return false;
+      break;
+    case ACUT:
+      if (record->event.pressed) {
+        SEND_STRING (SS_LSFT("=")" ");
       }
       return false;
       break;
