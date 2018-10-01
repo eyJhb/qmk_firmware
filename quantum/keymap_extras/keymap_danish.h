@@ -72,6 +72,9 @@
 #define DA_CIRC LSFT(KC_RBRC) // ^
 #define DA_CIRCUMFLEX DA_CIRC
 
+#define DA_ACUT	ALGR(DA_BSLS)  // ´
+#define DA_BSLS KC_EQL  // '\'
+
 #define DA_GT LSFT(KC_BSLASH) // >
 #define DA_RABK DA_GT
 #define DA_RIGHT_ANGLE_BRACKET DA_GT
